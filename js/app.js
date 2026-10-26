@@ -134,11 +134,11 @@ if (!reduce.matches && !coarse.matches) {
 if (coarse.matches && !reduce.matches) {
   setInterval(() => {
     if (!cells.length || document.body.dataset.page !== 'home') return;
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 4; i++) {
       const c = cells[(Math.random() * cells.length) | 0];
       if (!blocked(c)) reveal(c, 1800);
     }
-  }, 900);
+  }, 650);
 }
 
 let rtGrid;
