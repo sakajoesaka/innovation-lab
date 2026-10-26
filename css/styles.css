@@ -33,6 +33,7 @@ body[data-page="page"] #field{display:none}
 /* landing */
 #home[hidden]{display:none}
 #home{position:relative;z-index:10;height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 24px;pointer-events:none}
+#hero{position:relative;top:-3vh}
 #hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.1rem,4.6vw,4.1rem);line-height:1.04;letter-spacing:-.005em;margin:0}
 
 /* interior pages — solid, nothing showing through */

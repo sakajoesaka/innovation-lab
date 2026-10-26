@@ -139,7 +139,7 @@ if (coarse.matches && !reduce.matches) {
       const c = cells[(Math.random() * cells.length) | 0];
       if (!blocked(c)) reveal(c, 1800);
     }
-  }, 650);
+  }, 450);
 }
 
 let rtGrid;
