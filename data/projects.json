@@ -1,0 +1,311 @@
+{
+  "years": [
+    {
+      "year": 2025,
+      "projects": [
+        {
+          "title": "Machine Learning for Exoplanet Detection",
+          "award": "Best Project",
+          "students": [
+            {
+              "name": "Girith Kishore Kumar",
+              "email": "girith.kumar.24@ucl.ac.uk"
+            },
+            {
+              "name": "Eddie Wong",
+              "email": "eddie.wong.24@ucl.ac.uk"
+            }
+          ],
+          "disciplines": [
+            "Physics",
+            "Maths"
+          ],
+          "abstract": "A deep neural network trained on NASA Kepler Space Telescope data to distinguish confirmed exoplanets from false positives, with the aim of laying groundwork for further work in automated detection.",
+          "report": null
+        },
+        {
+          "title": "Mapping Urban Heat Islands Across Greater London",
+          "award": "Student Choice",
+          "students": [
+            {
+              "name": "Priya Raman",
+              "email": null
+            },
+            {
+              "name": "Tomas Lindqvist",
+              "email": null
+            }
+          ],
+          "disciplines": [
+            "Earth Science",
+            "Physics"
+          ],
+          "abstract": "Satellite thermal imaging combined with ground sensor readings to identify where London heats fastest, and how green space correlates with local temperature.",
+          "report": null
+        },
+        {
+          "title": "A Low-Cost Spectrometer from Consumer Optics",
+          "award": null,
+          "students": [
+            {
+              "name": "Hannah Okafor",
+              "email": null
+            },
+            {
+              "name": "Wei Chen",
+              "email": null
+            }
+          ],
+          "disciplines": [
+            "Physics",
+            "Chemistry"
+          ],
+          "abstract": "Building and calibrating a working spectrometer from a webcam sensor and a diffraction grating, tested against known emission spectra.",
+          "report": null
+        },
+        {
+          "title": "Modelling Antibiotic Resistance in Mixed Bacterial Populations",
+          "award": null,
+          "students": [
+            {
+              "name": "Sofia Almeida",
+              "email": null
+            },
+            {
+              "name": "James Whitfield",
+              "email": null
+            }
+          ],
+          "disciplines": [
+            "Biology",
+            "Maths"
+          ],
+          "abstract": "An agent-based simulation of how resistance spreads under different dosing schedules, compared against published clinical data.",
+          "report": null
+        },
+        {
+          "title": "Catalyst Screening for Plastic Depolymerisation",
+          "award": null,
+          "students": [
+            {
+              "name": "Daniel Osei",
+              "email": null
+            },
+            {
+              "name": "Marta Kowalski",
+              "email": null
+            }
+          ],
+          "disciplines": [
+            "Chemistry"
+          ],
+          "abstract": "A comparison of low-temperature catalysts for breaking down PET, run as a small-scale bench study over eight weeks.",
+          "report": null
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "projects": [
+        {
+          "title": "Predicting Protein Fold Stability from Sequence Alone",
+          "award": "Best Project",
+          "students": [
+            {
+              "name": "Amelia Fitzgerald",
+              "email": null
+            },
+            {
+              "name": "Rohan Desai",
+              "email": null
+            }
+          ],
+          "disciplines": [
+            "Biology",
+            "Maths"
+          ],
+          "abstract": "A lightweight model trained on public mutation data to estimate how single amino acid substitutions affect folding stability, benchmarked against experimental melting temperatures.",
+          "report": null
+        },
+        {
+          "title": "Sonifying Seismic Data from the British Isles",
+          "award": "Student Choice",
+          "students": [
+            {
+              "name": "Iona MacLeod",
+              "email": null
+            },
+            {
+              "name": "Ben Tarrant",
+              "email": null
+            }
+          ],
+          "disciplines": [
+            "Earth Science",
+            "Physics"
+          ],
+          "abstract": "Converting a decade of low-magnitude UK earthquake recordings into audio, and testing whether listeners can identify event depth by ear more reliably than by reading a seismogram.",
+          "report": null
+        },
+        {
+          "title": "Electrochemical Detection of Microplastics in Tap Water",
+          "award": null,
+          "students": [
+            {
+              "name": "Yusuf Karim",
+              "email": null
+            },
+            {
+              "name": "Clara Bianchi",
+              "email": null
+            }
+          ],
+          "disciplines": [
+            "Chemistry",
+            "Earth Science"
+          ],
+          "abstract": "A prototype sensor using modified carbon electrodes to flag polymer particles in water samples collected from six London boroughs.",
+          "report": null
+        },
+        {
+          "title": "The Geometry of Soap Films on Wire Frames",
+          "award": null,
+          "students": [
+            {
+              "name": "Nathan Obi",
+              "email": null
+            }
+          ],
+          "disciplines": [
+            "Maths",
+            "Physics"
+          ],
+          "abstract": "An experimental and computational study of minimal surfaces, comparing photographed soap films against numerically solved Plateau problems.",
+          "report": null
+        }
+      ]
+    },
+    {
+      "year": 2021,
+      "projects": [
+        {
+          "title": "Modelling Vaccine Rollout Under Supply Constraints",
+          "award": "Best Project",
+          "students": [
+            {
+              "name": "Elena Petrova",
+              "email": null
+            },
+            {
+              "name": "Sam Whitaker",
+              "email": null
+            }
+          ],
+          "disciplines": [
+            "Maths",
+            "Biology"
+          ],
+          "abstract": "A compartmental model exploring how different prioritisation strategies change outcomes when doses arrive unevenly over time.",
+          "report": null
+        },
+        {
+          "title": "Building a Cloud Chamber from Household Materials",
+          "award": "Student Choice",
+          "students": [
+            {
+              "name": "Arjun Mehta",
+              "email": null
+            },
+            {
+              "name": "Lucy Brennan",
+              "email": null
+            }
+          ],
+          "disciplines": [
+            "Physics"
+          ],
+          "abstract": "A step-by-step build and characterisation of a diffusion cloud chamber, including measured track counts at different altitudes around London.",
+          "report": null
+        },
+        {
+          "title": "Green Solvent Alternatives for Undergraduate Teaching Labs",
+          "award": null,
+          "students": [
+            {
+              "name": "Fatima Zahra",
+              "email": null
+            },
+            {
+              "name": "Oliver Grant",
+              "email": null
+            }
+          ],
+          "disciplines": [
+            "Chemistry"
+          ],
+          "abstract": "A survey of safer replacements for common teaching lab solvents, assessed on cost, yield and waste handling.",
+          "report": null
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "projects": [
+        {
+          "title": "Air Quality During Lockdown: A London Case Study",
+          "award": "Best Project",
+          "students": [
+            {
+              "name": "Harriet Nwosu",
+              "email": null
+            },
+            {
+              "name": "Kai Tanaka",
+              "email": null
+            }
+          ],
+          "disciplines": [
+            "Earth Science",
+            "Chemistry"
+          ],
+          "abstract": "Analysis of nitrogen dioxide and particulate readings from public monitoring stations before, during and after the first UK lockdown.",
+          "report": null
+        },
+        {
+          "title": "A Browser-Based Simulator for Cellular Automata",
+          "award": "Student Choice",
+          "students": [
+            {
+              "name": "Marcus Reid",
+              "email": null
+            }
+          ],
+          "disciplines": [
+            "Maths"
+          ],
+          "abstract": "An interactive tool for exploring rule spaces in one and two dimensions, built for use in first-year teaching.",
+          "report": null
+        },
+        {
+          "title": "Bioluminescence in Cultured Algae",
+          "award": null,
+          "students": [
+            {
+              "name": "Nadia Haddad",
+              "email": null
+            },
+            {
+              "name": "Tom Ellery",
+              "email": null
+            }
+          ],
+          "disciplines": [
+            "Biology"
+          ],
+          "abstract": "Measuring how light output in dinoflagellate cultures varies with the timing of mechanical stimulation across a simulated day-night cycle.",
+          "report": null
+        }
+      ]
+    }
+  ]
+}
