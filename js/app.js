@@ -72,13 +72,14 @@ function buildGrid() {
 /* any UI on screen blocks the reveal, so nothing lights up behind readable text */
 function measureZones() {
   zones = [];
-  const add = (n, px, py) => {
+  const add = (n, px, py, trimTop = 0) => {
     if (!n || n.hidden) return;
     const b = n.getBoundingClientRect();
     if (!b.width) return;
-    zones.push({ l: b.left - px, r: b.right + px, t: b.top - py, b: b.bottom + py });
+    zones.push({ l: b.left - px, r: b.right + px, t: b.top - py + trimTop, b: b.bottom + py });
   };
-  if (document.body.dataset.page === 'home') add(hero, 56, 40);
+  // trim one grid row off the top so the title's blocked area is balanced
+  if (document.body.dataset.page === 'home') add(hero, 56, 40, CELL_H);
   add(markEl, 14, 14);
   add(trigger, 14, 14);
   if (!panel.hidden) add(panel, 12, 12);
