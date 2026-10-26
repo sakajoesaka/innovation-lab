@@ -97,15 +97,19 @@ function reveal(cell, hold) {
   cell.on = true;
   if (cell.t) clearTimeout(cell.t);
   cell.t = setTimeout(() => {
+    // fade the symbol out first, then swap the text back once it is invisible
     cell.el.classList.remove('on');
-    cell.el.style.color = '';
-    cell.el.textContent = cell.base;
     cell.on = false;
-    cell.t = null;
+    cell.t = setTimeout(() => {
+      cell.el.style.color = '';
+      cell.el.textContent = cell.base;
+      cell.t = null;
+    }, FADE_OUT);
   }, hold);
 }
 
 const RADIUS = 78;
+const FADE_OUT = 1100;   // keep in sync with #field .c opacity transition in styles.css
 let mx = -9999, my = -9999, queued = false;
 
 function sweep() {
@@ -115,7 +119,7 @@ function sweep() {
     if (blocked(cell)) continue;
     const dx = cell.x - mx, dy = cell.y - my;
     if (dx * dx + dy * dy < RADIUS * RADIUS && (!cell.on || Math.random() < 0.02)) {
-      reveal(cell, 520 + Math.random() * 420);
+      reveal(cell, 1200 + Math.random() * 800);
     }
   }
 }
@@ -132,7 +136,7 @@ if (coarse.matches && !reduce.matches) {
     if (!cells.length || document.body.dataset.page !== 'home') return;
     for (let i = 0; i < 3; i++) {
       const c = cells[(Math.random() * cells.length) | 0];
-      if (!blocked(c)) reveal(c, 1100);
+      if (!blocked(c)) reveal(c, 1800);
     }
   }, 900);
 }
@@ -181,7 +185,7 @@ function collapseToBinary() {
       el.textContent = Math.random() < 0.5 ? '0' : '1';
       el.style.color = 'var(--fg)';
       el.style.opacity = '0.12';
-    }, Math.random() * 260);
+    }, Math.random() * 600);
   }
 }
 
@@ -194,8 +198,8 @@ function transition(applyFn) {
   disc.style.clipPath = 'circle(0% at 50% 50%)';
   chars.style.clipPath = 'circle(0% at 50% 50%)';
   requestAnimationFrame(() => {
-    disc.style.transition = 'clip-path .42s cubic-bezier(.4,0,.2,1)';
-    chars.style.transition = 'clip-path .42s cubic-bezier(.4,0,.2,1),opacity .22s linear';
+    disc.style.transition = 'clip-path .75s cubic-bezier(.4,0,.2,1)';
+    chars.style.transition = 'clip-path .75s cubic-bezier(.4,0,.2,1),opacity .4s linear';
     disc.style.clipPath = 'circle(78% at 50% 50%)';
     chars.style.clipPath = 'circle(78% at 50% 50%)';
     chars.style.opacity = '1';
@@ -203,17 +207,17 @@ function transition(applyFn) {
       applyFn();
       collapseToBinary();
       setTimeout(() => {
-        disc.style.transition = 'opacity .3s linear';
-        chars.style.transition = 'opacity .3s linear';
+        disc.style.transition = 'opacity .7s ease-out';
+        chars.style.transition = 'opacity .7s ease-out';
         disc.style.opacity = '0';
         chars.style.opacity = '0';
         setTimeout(() => {
           wipe.classList.remove('run');
           disc.style.opacity = '1';
           chars.style.opacity = '1';
-        }, 300);
-      }, 240);
-    }, 430);
+        }, 700);
+      }, 700);
+    }, 760);
   });
 }
 
