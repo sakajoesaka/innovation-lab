@@ -334,25 +334,72 @@ function buildTimeline() {
 }
 
 /* ---------- templates ---------- */
-function projHTML(x, year) {
+const tagsHTML = x => x.disciplines
+  .map(g => `<span class="${TAGCLASS[g] || ''}">${esc(g)}</span>`)
+  .join('');
+
+const reportHTML = x => x.report
+  ? `<a class="report" href="${esc(x.report)}">Project report</a>`
+  : `<span class="report" style="color:var(--dim);border-color:var(--line)">Report to follow</span>`;
+
+function projHTML(x, year, i) {
   const people = x.students
     .map(s => s.email ? `${esc(s.name)} (<a href="mailto:${esc(s.email)}">${esc(s.email)}</a>)` : esc(s.name))
     .join(', ');
-  const tags = x.disciplines
-    .map(g => `<span class="${TAGCLASS[g] || ''}">${esc(g)}</span>`)
-    .join('');
-  const report = x.report
-    ? `<a class="report" href="${esc(x.report)}">Project report</a>`
-    : `<span class="report" style="color:var(--dim);border-color:var(--line)">Report to follow</span>`;
-  return `<article class="proj">
+  return `<article class="proj" data-year="${esc(year)}" data-i="${i}" tabindex="0" role="button" aria-haspopup="dialog">
     ${x.award ? `<p class="award">${esc(x.award)}</p>` : ''}
     <h4>${esc(x.title)}</h4>
     <p class="who">${people}</p>
-    <div class="tags">${tags}</div>
+    <div class="tags">${tagsHTML(x)}</div>
     <p class="abs">${esc(x.abstract)}</p>
-    ${report}
+    <div class="proj-foot">${reportHTML(x)}<span class="more">View team &amp; details &rarr;</span></div>
   </article>`;
 }
+
+/* ---------- project pop-up ---------- */
+const modal  = document.getElementById('proj-modal');
+const mInner = document.getElementById('m-inner');
+
+function studentHTML(s) {
+  return `<li>
+    <p class="t-name">${esc(s.name)}</p>
+    ${s.degree ? `<p class="t-degree">${esc(s.degree)}</p>` : ''}
+    ${s.bio ? `<p class="t-about">${esc(s.bio)}</p>` : ''}
+    ${s.email ? `<a class="t-mail" href="mailto:${esc(s.email)}">${esc(s.email)}</a>` : ''}
+  </li>`;
+}
+
+function openProject(year, i) {
+  const x = (GALLERY[year] || [])[i];
+  if (!x) return;
+  mInner.innerHTML = `<button type="button" class="m-close" aria-label="Close">CLOSE &times;</button>
+    <p class="award">${x.award ? esc(x.award) + ' · ' : ''}Innovation Lab ${esc(year)}</p>
+    <h3 id="m-title">${esc(x.title)}</h3>
+    <div class="tags">${tagsHTML(x)}</div>
+    <p class="m-body">${esc(x.details || x.abstract)}</p>
+    <h4 class="m-sub">The team</h4>
+    <ul class="team">${x.students.map(studentHTML).join('')}</ul>
+    ${reportHTML(x)}`;
+  modal.showModal();
+  modal.scrollTop = 0;
+}
+
+pageEl.addEventListener('click', e => {
+  if (e.target.closest('a')) return;   // email and report links keep working
+  const card = e.target.closest('.proj');
+  if (card) openProject(card.dataset.year, Number(card.dataset.i));
+});
+pageEl.addEventListener('keydown', e => {
+  const card = e.target.closest('.proj');
+  if (card && e.target === card && (e.key === 'Enter' || e.key === ' ')) {
+    e.preventDefault();
+    openProject(card.dataset.year, Number(card.dataset.i));
+  }
+});
+// close on the button or a click on the dimmed backdrop (Esc is handled by <dialog>)
+modal.addEventListener('click', e => {
+  if (e.target === modal || e.target.closest('.m-close')) modal.close();
+});
 
 function tabs(active) {
   return `<div class="tabs">${
@@ -383,7 +430,7 @@ function galleryYear(year) {
     ${tabs(year)}
   </div>
   <p class="count">${list.length} project${list.length === 1 ? '' : 's'}</p>
-  ${list.map(x => projHTML(x, year)).join('')}`;
+  ${list.map((x, i) => projHTML(x, year, i)).join('')}`;
 }
 
 const ABOUT = `<h2>About the programme</h2>
@@ -427,6 +474,7 @@ function apply(hash) {
 function render() {
   const hash = location.hash.replace(/^#/, '') || '/';
   setMenu(false);
+  if (modal.open) modal.close();
   if (current === null) { apply(hash); current = hash; return; }
   if (current === hash) return;
 

@@ -40,8 +40,13 @@ first and the Student Choice winner second.
   "title": "Project title",
   "award": "Best Project",
   "students": [
-    { "name": "Ada Lovelace", "email": "ada.lovelace.24@ucl.ac.uk" },
-    { "name": "Second Student", "email": null }
+    {
+      "name": "Ada Lovelace",
+      "degree": "BSc Natural Sciences (Physics & Mathematics)",
+      "bio": "One or two sentences about the student.",
+      "email": "ada.lovelace.24@ucl.ac.uk"
+    },
+    { "name": "Second Student", "degree": "MSci Chemistry", "bio": null, "email": null }
   ],
   "disciplines": ["Physics", "Maths"],
   "abstract": "Two or three sentences.",
@@ -51,6 +56,12 @@ first and the Student Choice winner second.
 
 - `award` — `"Best Project"`, `"Student Choice"`, or `null`
 - `email` — `null` if you don't have one; the name still shows
+- `degree`, `bio` — shown in the pop-up when a project card is clicked.
+  `degree` is the stream for NatSci students, e.g.
+  `BSc Natural Sciences (Synthetic Organic Chemistry & Biomedical Science)`,
+  or the degree otherwise, e.g. `MSci Chemistry`. `null` hides the line.
+- `details` — optional longer write-up for the pop-up. Without it the pop-up
+  shows the `abstract`.
 - `disciplines` — must match exactly: `Biology`, `Chemistry`, `Physics`,
   `Maths`, `Earth Science`. Anything else renders without a colour.
 - `report` — a path or URL. `null` shows "Report to follow".

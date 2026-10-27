@@ -68,10 +68,14 @@
           "students": [
             {
               "name": "Girith Kishore Kumar",
+              "degree": null,
+              "bio": null,
               "email": "girith.kumar.24@ucl.ac.uk"
             },
             {
               "name": "Eddie Wong",
+              "degree": null,
+              "bio": null,
               "email": "eddie.wong.24@ucl.ac.uk"
             }
           ],
@@ -88,10 +92,14 @@
           "students": [
             {
               "name": "Priya Raman",
+              "degree": null,
+              "bio": null,
               "email": null
             },
             {
               "name": "Tomas Lindqvist",
+              "degree": null,
+              "bio": null,
               "email": null
             }
           ],
@@ -108,10 +116,14 @@
           "students": [
             {
               "name": "Hannah Okafor",
+              "degree": null,
+              "bio": null,
               "email": null
             },
             {
               "name": "Wei Chen",
+              "degree": null,
+              "bio": null,
               "email": null
             }
           ],
@@ -128,10 +140,14 @@
           "students": [
             {
               "name": "Sofia Almeida",
+              "degree": null,
+              "bio": null,
               "email": null
             },
             {
               "name": "James Whitfield",
+              "degree": null,
+              "bio": null,
               "email": null
             }
           ],
@@ -148,10 +164,14 @@
           "students": [
             {
               "name": "Daniel Osei",
+              "degree": null,
+              "bio": null,
               "email": null
             },
             {
               "name": "Marta Kowalski",
+              "degree": null,
+              "bio": null,
               "email": null
             }
           ],
@@ -172,10 +192,14 @@
           "students": [
             {
               "name": "Amelia Fitzgerald",
+              "degree": null,
+              "bio": null,
               "email": null
             },
             {
               "name": "Rohan Desai",
+              "degree": null,
+              "bio": null,
               "email": null
             }
           ],
@@ -192,10 +216,14 @@
           "students": [
             {
               "name": "Iona MacLeod",
+              "degree": null,
+              "bio": null,
               "email": null
             },
             {
               "name": "Ben Tarrant",
+              "degree": null,
+              "bio": null,
               "email": null
             }
           ],
@@ -212,10 +240,14 @@
           "students": [
             {
               "name": "Yusuf Karim",
+              "degree": null,
+              "bio": null,
               "email": null
             },
             {
               "name": "Clara Bianchi",
+              "degree": null,
+              "bio": null,
               "email": null
             }
           ],
@@ -232,6 +264,8 @@
           "students": [
             {
               "name": "Nathan Obi",
+              "degree": null,
+              "bio": null,
               "email": null
             }
           ],
@@ -253,10 +287,14 @@
           "students": [
             {
               "name": "Elena Petrova",
+              "degree": null,
+              "bio": null,
               "email": null
             },
             {
               "name": "Sam Whitaker",
+              "degree": null,
+              "bio": null,
               "email": null
             }
           ],
@@ -273,10 +311,14 @@
           "students": [
             {
               "name": "Arjun Mehta",
+              "degree": null,
+              "bio": null,
               "email": null
             },
             {
               "name": "Lucy Brennan",
+              "degree": null,
+              "bio": null,
               "email": null
             }
           ],
@@ -292,10 +334,14 @@
           "students": [
             {
               "name": "Fatima Zahra",
+              "degree": null,
+              "bio": null,
               "email": null
             },
             {
               "name": "Oliver Grant",
+              "degree": null,
+              "bio": null,
               "email": null
             }
           ],
@@ -316,10 +362,14 @@
           "students": [
             {
               "name": "Harriet Nwosu",
+              "degree": null,
+              "bio": null,
               "email": null
             },
             {
               "name": "Kai Tanaka",
+              "degree": null,
+              "bio": null,
               "email": null
             }
           ],
@@ -336,6 +386,8 @@
           "students": [
             {
               "name": "Marcus Reid",
+              "degree": null,
+              "bio": null,
               "email": null
             }
           ],
@@ -351,10 +403,14 @@
           "students": [
             {
               "name": "Nadia Haddad",
+              "degree": null,
+              "bio": null,
               "email": null
             },
             {
               "name": "Tom Ellery",
+              "degree": null,
+              "bio": null,
               "email": null
             }
           ],
