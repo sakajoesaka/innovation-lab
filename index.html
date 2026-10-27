@@ -7,7 +7,7 @@
 <meta name="description" content="Independent student-led summer projects from the UCL Natural Sciences Programme.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Instrument+Serif&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-page="home">
@@ -27,7 +27,49 @@
 </nav>
 
 <section id="home">
-  <div id="hero"><h1>Natural Sciences Innovation Lab</h1></div>
+  <header class="hero">
+    <div id="hero">
+      <p class="kicker">UCL Natural Sciences &middot; Student-led summer projects</p>
+      <h1><span class="soft">Natural Sciences</span><br>Innovation Lab</h1>
+      <p class="intro">Form a team, design a project of your own in any area of Natural Sciences, and present your results at the Induction Week showcase.</p>
+      <div class="cta">
+        <a class="btn solid" href="#/gallery">Browse past projects</a>
+        <a class="btn" href="#/about">Get involved</a>
+      </div>
+      <dl class="facts">
+        <div><dt>Open to</dt><dd>NatSci students, years 1&ndash;4</dd></div>
+        <div><dt>Format</dt><dd>Small teams, own project</dd></div>
+        <div><dt>When</dt><dd>Summer, after Term 3</dd></div>
+        <div><dt>Showcase</dt><dd>Induction Week</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <div class="home-body">
+    <section class="block" aria-labelledby="moments-h">
+      <div class="block-head">
+        <p class="sec-name">Previous years</p>
+        <h2 id="moments-h">Moments from the Lab</h2>
+      </div>
+      <div class="slides" id="slides" aria-roledescription="carousel"></div>
+    </section>
+
+    <section class="block" aria-labelledby="tl-h">
+      <div class="block-head">
+        <p class="sec-name">How it works</p>
+        <h2 id="tl-h">The Innovation Lab year</h2>
+      </div>
+      <ol class="tl" id="tl"></ol>
+    </section>
+
+    <footer class="home-foot">
+      <div>
+        <h2>Interested in taking part?</h2>
+        <p>First-year students are especially encouraged, and you can join even if you're not in London over the summer.</p>
+      </div>
+      <p class="contact-line">Dr Peter Bratby<br><em>Lecturer in Natural Sciences</em><br><a href="mailto:p.bratby@ucl.ac.uk">p.bratby@ucl.ac.uk</a></p>
+    </footer>
+  </div>
 </section>
 
 <main class="page" id="page" hidden></main>

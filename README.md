@@ -60,12 +60,24 @@ first and the Student Choice winner second.
 Add a new object to `years`. The menu, the gallery index and the year tabs
 all read from this file, so nothing else needs changing.
 
+## Landing page slideshow and timeline
+
+Both live at the top of `data/projects.json`.
+
+- `slides` — each has a `tag` (small label), a `caption`, an `image` and an
+  `alt`. With `"image": null` the slide shows a placeholder. To add a photo,
+  put it in `assets/slides/` and set `"image": "assets/slides/showcase-2025.jpg"`
+  plus a short `alt` description. Landscape photos around 1600×900 work best.
+- `timeline` — each step has `when`, `title` and `text`. Steps render in
+  order; add or remove as many as you like.
+
 ## Other things you might want to change
 
 | What | Where |
 |---|---|
 | Colours | `:root` at the top of `css/styles.css` |
-| Fonts | the Google Fonts `<link>` in `index.html`, plus `--serif`/`--sans`/`--mono` |
+| Fonts | the Google Fonts `<link>` in `index.html`, plus `--display`/`--serif`/`--sans`/`--mono` |
+| Landing headline, intro and facts | the `#home` section in `index.html` |
 | Symbols in the character field | `POOLS` at the top of `js/app.js` |
 | Reveal radius / grid density | `RADIUS` and `CELL_W`/`CELL_H` in `js/app.js` |
 | About and Contact copy | `ABOUT` and `CONTACT` constants in `js/app.js` |

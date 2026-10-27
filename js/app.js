@@ -18,7 +18,10 @@ const TAGCLASS = {
   Maths: 't-math', 'Earth Science': 't-earth'
 };
 
+const ACCENTS = ['var(--bio)', 'var(--chem)', 'var(--phys)', 'var(--math)', 'var(--earth)'];
+
 const pick = a => a[(Math.random() * a.length) | 0];
+const pad  = n => String(n).padStart(2, '0');
 const esc = str => String(str).replace(/[&<>"]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c]));
 
 const field   = document.getElementById('field');
@@ -28,6 +31,9 @@ const trigger = document.getElementById('trigger');
 const markEl  = document.querySelector('.mark');
 const homeEl  = document.getElementById('home');
 const pageEl  = document.getElementById('page');
+const homeBody = document.querySelector('.home-body');
+const slidesEl = document.getElementById('slides');
+const tlEl     = document.getElementById('tl');
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 const coarse = window.matchMedia('(pointer: coarse)');
@@ -35,6 +41,8 @@ const coarse = window.matchMedia('(pointer: coarse)');
 /* ---------- content, loaded from JSON ---------- */
 let YEARS = [];
 let GALLERY = {};
+let SLIDES = [];
+let TIMELINE = [];
 
 async function loadContent() {
   const res = await fetch('data/projects.json', { cache: 'no-cache' });
@@ -43,6 +51,8 @@ async function loadContent() {
   YEARS = data.years.map(y => y.year);
   GALLERY = {};
   for (const y of data.years) GALLERY[y.year] = y.projects;
+  SLIDES = data.slides || [];
+  TIMELINE = data.timeline || [];
 }
 
 /* ---------- character field (landing only) ---------- */
@@ -78,7 +88,10 @@ function measureZones() {
     if (!b.width) return;
     zones.push({ l: b.left - px, r: b.right + px, t: b.top - py, b: b.bottom + py });
   };
-  if (document.body.dataset.page === 'home') add(hero, 56, 40);
+  if (document.body.dataset.page === 'home') {
+    add(hero, 40, 30);
+    add(homeBody, 0, 0);   // solid sections below the hero cover the field
+  }
   add(markEl, 14, 14);
   add(trigger, 14, 14);
   if (!panel.hidden) add(panel, 12, 12);
@@ -141,8 +154,11 @@ if (coarse.matches && !reduce.matches) {
   }, 450);
 }
 
-let rtGrid;
+let rtGrid, zq = false;
 addEventListener('resize', () => { clearTimeout(rtGrid); rtGrid = setTimeout(buildGrid, 120); });
+addEventListener('scroll', () => {
+  if (!zq) { zq = true; requestAnimationFrame(() => { zq = false; measureZones(); }); }
+}, { passive: true });
 addEventListener('load', buildGrid);
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(buildGrid);
 
@@ -236,6 +252,87 @@ trigger.addEventListener('click', e => { e.stopPropagation(); setMenu(!menuOpen)
 document.addEventListener('click', e => { if (menuOpen && !panel.contains(e.target)) setMenu(false); });
 addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) { setMenu(false); trigger.focus(); } });
 
+/* ---------- landing: slideshow + timeline ---------- */
+const SLIDE_MS = 5500;
+let slideAt = 0, slideHold = false, slideTimer = null, downX = null;
+
+function slideHTML(s, i) {
+  const media = s.image
+    ? `<img src="${esc(s.image)}" alt="${esc(s.alt || s.caption)}"${i ? ' loading="lazy"' : ''} draggable="false">`
+    : `<div class="ph" style="--accent:${ACCENTS[i % ACCENTS.length]}">Photo placeholder</div>`;
+  return `<figure class="slide" aria-roledescription="slide" aria-label="${i + 1} of ${SLIDES.length}">
+    ${media}
+    <figcaption><span class="cap-tag">${esc(s.tag)}</span>${esc(s.caption)}</figcaption>
+  </figure>`;
+}
+
+function buildSlides() {
+  if (!SLIDES.length) { slidesEl.closest('.block').hidden = true; return; }
+  slidesEl.innerHTML = `<div class="track">${SLIDES.map(slideHTML).join('')}</div>
+  <div class="slide-ctrl">
+    <button type="button" data-step="-1" aria-label="Previous photo">&larr;</button>
+    <div class="dots">${SLIDES.map((_, i) => `<button type="button" data-go="${i}" aria-label="Show photo ${i + 1}"></button>`).join('')}</div>
+    <span class="slide-n" aria-live="polite"></span>
+    <button type="button" data-step="1" aria-label="Next photo">&rarr;</button>
+  </div>`;
+  showSlide(0);
+}
+
+function showSlide(i) {
+  const n = SLIDES.length;
+  slideAt = (i + n) % n;
+  slidesEl.querySelectorAll('.slide').forEach((el, k) => {
+    el.classList.toggle('on', k === slideAt);
+    el.setAttribute('aria-hidden', String(k !== slideAt));
+  });
+  slidesEl.querySelectorAll('.dots button').forEach((el, k) => el.classList.toggle('on', k === slideAt));
+  slidesEl.querySelector('.slide-n').textContent = `${pad(slideAt + 1)} / ${pad(n)}`;
+  queueSlide();
+}
+
+// autoplay restarts after every change, so a manual click gets a full interval
+function queueSlide() {
+  clearTimeout(slideTimer);
+  if (reduce.matches || SLIDES.length < 2) return;
+  slideTimer = setTimeout(() => {
+    if (slideHold || document.hidden || document.body.dataset.page !== 'home') queueSlide();
+    else showSlide(slideAt + 1);
+  }, SLIDE_MS);
+}
+
+slidesEl.addEventListener('click', e => {
+  const b = e.target.closest('button');
+  if (!b) return;
+  if (b.dataset.step) showSlide(slideAt + Number(b.dataset.step));
+  else if (b.dataset.go) showSlide(Number(b.dataset.go));
+});
+slidesEl.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') showSlide(slideAt - 1);
+  if (e.key === 'ArrowRight') showSlide(slideAt + 1);
+});
+slidesEl.addEventListener('mouseenter', () => { slideHold = true; });
+slidesEl.addEventListener('mouseleave', () => { slideHold = false; });
+slidesEl.addEventListener('focusin', () => { slideHold = true; });
+slidesEl.addEventListener('focusout', () => { slideHold = false; });
+slidesEl.addEventListener('pointerdown', e => { if (e.target.closest('.track')) downX = e.clientX; });
+slidesEl.addEventListener('pointerup', e => {
+  if (downX === null) return;
+  const dx = e.clientX - downX;
+  downX = null;
+  if (Math.abs(dx) > 40) showSlide(slideAt + (dx < 0 ? 1 : -1));
+});
+
+function buildTimeline() {
+  if (!TIMELINE.length) { tlEl.closest('.block').hidden = true; return; }
+  tlEl.style.setProperty('--n', TIMELINE.length);
+  tlEl.innerHTML = TIMELINE.map((t, i) => `<li class="tl-item" style="--node:${ACCENTS[i % ACCENTS.length]}">
+    <span class="tl-step">${pad(i + 1)}</span>
+    <p class="tl-when">${esc(t.when)}</p>
+    <h3>${esc(t.title)}</h3>
+    <p>${esc(t.text)}</p>
+  </li>`).join('');
+}
+
 /* ---------- templates ---------- */
 function projHTML(x, year) {
   const people = x.students
@@ -312,6 +409,7 @@ function apply(hash) {
     homeEl.hidden = false;
     pageEl.hidden = true;
     pageEl.innerHTML = '';
+    scrollTo(0, 0);
   } else {
     document.body.dataset.page = 'page';
     homeEl.hidden = true;
@@ -347,7 +445,7 @@ buildGrid();
 buildWipe();
 
 loadContent()
-  .then(render)
+  .then(() => { buildSlides(); buildTimeline(); render(); })
   .catch(err => {
     console.error(err);
     document.body.dataset.page = 'page';

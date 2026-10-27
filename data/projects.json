@@ -1,4 +1,63 @@
 {
+  "slides": [
+    {
+      "tag": "Showcase · 2025",
+      "caption": "Teams presenting their results at the Induction Week showcase",
+      "image": null,
+      "alt": null
+    },
+    {
+      "tag": "Launch session · 2025",
+      "caption": "Students sharing ideas and forming teams at the end of Term 3",
+      "image": null,
+      "alt": null
+    },
+    {
+      "tag": "Awards · 2025",
+      "caption": "Best Project and Student Choice winners",
+      "image": null,
+      "alt": null
+    },
+    {
+      "tag": "Summer · 2024",
+      "caption": "Teams at work on their projects over the summer",
+      "image": null,
+      "alt": null
+    },
+    {
+      "tag": "Showcase · 2024",
+      "caption": "Posters and demos from the 2024 cohort",
+      "image": null,
+      "alt": null
+    }
+  ],
+  "timeline": [
+    {
+      "when": "Term 3",
+      "title": "Register interest",
+      "text": "Get in touch with Dr Peter Bratby to register interest or ask questions. Open to NatSci students in years 1 to 4."
+    },
+    {
+      "when": "End of Term 3",
+      "title": "Launch session",
+      "text": "Meet other students, share ideas and form small teams around a project of your own design."
+    },
+    {
+      "when": "Summer",
+      "title": "Run your project",
+      "text": "Teams work independently on their project, in any area of Natural Sciences. You don't need to be in London."
+    },
+    {
+      "when": "Induction Week",
+      "title": "Student showcase",
+      "text": "Teams present their results to students and staff at the showcase."
+    },
+    {
+      "when": "After the showcase",
+      "title": "Awards and gallery",
+      "text": "Best Project and Student Choice are announced, and every project joins the gallery."
+    }
+  ],
   "years": [
     {
       "year": 2025,
